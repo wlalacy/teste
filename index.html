@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OMMO • Plataforma de Provas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <aside class="side-nav" id="sideNav">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <div>
+          <h1>OMMO</h1>
+          <p>Olimpíada de Matemática</p>
+        </div>
+      </div>
+      <nav class="nav-links" id="navLinks"></nav>
+      <button class="btn ghost" id="logoutBtn">Sair</button>
+    </aside>
+
+    <main class="main-content">
+      <section class="panel" id="loginPanel">
+        <div class="panel-card">
+          <h2>Bem-vindo à plataforma OMMO</h2>
+          <p class="muted">Faça login para acessar sua prova ou o painel administrativo.</p>
+          <div class="notice">
+            <p><strong>Admin:</strong> adm@ommo.org • adm12345</p>
+            <p><strong>Aluno:</strong> aluno@ommo.org • aluno123</p>
+          </div>
+          <form id="loginForm" class="form-grid">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" id="loginEmail" required placeholder="seu@email.com" />
+            </div>
+            <div class="field">
+              <label>Senha</label>
+              <input type="password" id="loginPassword" required placeholder="********" />
+            </div>
+            <button class="btn primary" type="submit">Entrar</button>
+            <p class="form-hint" id="loginHint"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="studentDashboard">
+        <header class="panel-header">
+          <div>
+            <h2>Dashboard do Aluno</h2>
+            <p class="muted">Acompanhe sua participação na OMMO.</p>
+          </div>
+          <div class="badge" id="studentStatusBadge"></div>
+        </header>
+        <div class="cards-grid" id="studentCards"></div>
+      </section>
+
+      <section class="panel hidden" id="adminDashboard">
+        <header class="panel-header">
+          <div>
+            <h2>Dashboard Administrativo</h2>
+            <p class="muted">Controle total da olimpíada e das provas.</p>
+          </div>
+          <div class="badge" id="adminStatusBadge">Admin</div>
+        </header>
+        <div class="tabs">
+          <button class="tab active" data-tab="users">Usuários</button>
+          <button class="tab" data-tab="exams">Olimpíadas</button>
+          <button class="tab" data-tab="corrections">Correções</button>
+        </div>
+        <div class="tab-content" id="adminTabContent"></div>
+      </section>
+
+      <section class="panel hidden" id="examPanel">
+        <header class="panel-header">
+          <div>
+            <h2 id="examTitle">Prova OMMO</h2>
+            <p class="muted" id="examSubtitle"></p>
+          </div>
+          <div class="timer" id="examTimer">02:00:00</div>
+        </header>
+        <div class="progress">
+          <div class="progress-bar" id="examProgress"></div>
+        </div>
+        <div class="question-grid" id="examQuestions"></div>
+        <div class="exam-actions">
+          <button class="btn ghost" id="saveDraftBtn">Salvar rascunho</button>
+          <button class="btn primary" id="submitExamBtn">Enviar prova</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="profilePanel">
+        <header class="panel-header">
+          <div>
+            <h2>Meu perfil</h2>
+            <p class="muted">Detalhes da inscrição e histórico.</p>
+          </div>
+        </header>
+        <div class="cards-grid" id="profileCards"></div>
+      </section>
+
+      <div class="toast" id="toast"></div>
+    </main>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="auth.js"></script>
+  <script src="ui.js"></script>
+  <script src="antiCheat.js"></script>
+  <script src="exam.js"></script>
+  <script src="admin.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
